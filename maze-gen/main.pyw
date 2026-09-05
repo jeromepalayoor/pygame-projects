@@ -1,6 +1,5 @@
 import pygame
 import random
-import pyautogui
 import math
 import os
 
@@ -9,10 +8,9 @@ try:
 except FileExistsError:
    pass
 
-pyautogui.FAILSAFE = False
-os.environ['SDL_VIDEO_WINDOW_POS'] = "0,30"
-
 pygame.init()
+
+TOTAL_COUNT = 30
 
 width,height = 1200,600
 win = pygame.display.set_mode((width,height))
@@ -108,7 +106,7 @@ class Cell():
     def calculate(self):
         self.fromstart = math.sqrt(self.x**2 + self.y**2)
         self.fromend = math.sqrt((self.x-end[0])**2 + (self.y-end[1])**2)
-        self.total = self.fromstart + self.fromend + self.fromend
+        self.total = self.fromstart + self.fromend
 
 cells = []
 for y in range(height//size):
@@ -126,11 +124,9 @@ while run:
     for event in events:
         if event.type == pygame.QUIT:
             run = False
-    
 
     new = cells[current[1]][current[0]].visit(cells)
     if new:
-
         x = new[0] - current[0]
 
         if x == 1:
@@ -156,8 +152,7 @@ while run:
             current = stack.pop()
 
     if len(stack) == 0 and not created:
-        img = pyautogui.screenshot(region=(0,30, width, height))
-        img.save(os.getcwd() + "\\mazes\\maze " + str(count) + ".png")
+        pygame.image.save(win, os.getcwd() + "\\mazes\\maze " + str(count) + ".png")
         created = True
         cells[start[1]][start[0]].open = True
         cells[start[1]][start[0]].closed = True
@@ -173,7 +168,6 @@ while run:
                 if cells[y][x].open and not cells[y][x].closed:
                     if cells[y][x].total < record:
                         bestindex = [x,y]
-        
 
         if bestindex != [-1,-1]:
             currentfind = bestindex
@@ -181,10 +175,8 @@ while run:
         if cells[end[1]][end[0]].closed:
             solved = True
 
-
     if created and solved and captured:
-        img = pyautogui.screenshot(region=(0,30, width, height))
-        img.save(os.getcwd() + "\\mazes\\maze " + str(count) + " solution.png")
+        pygame.image.save(win, os.getcwd() + "\\mazes\\maze " + str(count) + " solution.png")
         created = False
         captured = False
         solved = False
@@ -217,7 +209,6 @@ while run:
         while True:
             parent = cells[parent[1]][parent[0]].parent
             points.append(parent)
-
             if parent == [-1,-1]:
                 break
         
@@ -228,10 +219,9 @@ while run:
         captured = True
 
     pygame.display.set_caption("Maze Generator - Creating Maze " + str(count))
-
     pygame.display.update()
 
-    if count > 30:
+    if count > TOTAL_COUNT:
         exit()
 
 pygame.quit()
