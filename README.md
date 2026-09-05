@@ -9,12 +9,12 @@ A collection of small games and simulations built with Python and Pygame — mos
 | [`chess`](./chess) | Chess made with pygame |
 | [`bouncing-balls`](./bouncing-balls) | Use 'space' to bounce balls |
 | [`conways-game-of-life`](./conways-game-of-life) | Conway's Game of Life — a simulation of cellular automata |
-| [`flappy-birdie`](./flappy-birdie) | Flappy Bird clone, rendered with no images |
+| [`flappy-birdie`](./flappy-birdie) | Flappy Bird game, rendered with no images |
 | [`maze-gen`](./maze-gen) | Generates mazes using recursive backtracking, then solves them in real time with A* pathfinding |
-| [`minesweeper-clone`](./minesweeper-clone) | A Minesweeper clone |
+| [`minesweeper`](./minesweeper) | Minesweeper with pygame |
 | [`mouse-shooter`](./mouse-shooter) | Move your mouse and try not to get hit by the balls |
 | [`pygame-a-star-pathfinding`](./pygame-a-star-pathfinding) | A* pathfinding visualizer — draw obstacles with the mouse, press space to solve |
-| [`pygame-paint-program`](./pygame-paint-program) | A simple MS Paint clone with save/load in a custom file format |
+| [`pygame-paint-program`](./pygame-paint-program) | A simple MS Paint program with save/load in a custom file format |
 | [`pygame-snake`](./pygame-snake) | Classic Snake |
 | [`pygame-tetris`](./pygame-tetris) | Tetris with two block types |
 | [`seven-segment-display-clock`](./seven-segment-display-clock) | A digital clock rendered as a seven-segment display |
